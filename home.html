@@ -1,0 +1,1917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quennie Villaruel Valenzuela - Magical Code Universe</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Fira+Code:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-pink: #ff69b4;
+            --secondary-pink: #ff1493;
+            --accent-pink: #ffb3d9;
+            --dark-pink: #ff1493;
+            --neon-pink: #ff69b4;
+            --cyber-blue: #00ffff;
+            --matrix-green: #00ff41;
+        }
+
+        * {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: 500;
+        }
+
+        .code-font {
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-weight: 600;
+        }
+
+        .cyber-font {
+            font-family: 'Arial Black', 'Helvetica', sans-serif;
+            font-weight: 900;
+        }
+
+        /* Animated Background */
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #0a0a0a, #1a0a1a, #2a0a2a, #1a0a1a);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            z-index: -3;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Falling Code Animation */
+        .code-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -2;
+            overflow: hidden;
+        }
+
+        .code-column {
+            position: absolute;
+            top: -200px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 12px;
+            color: var(--neon-pink);
+            text-shadow: 0 0 8px var(--neon-pink);
+            animation: fall linear infinite;
+            white-space: pre-line;
+            line-height: 1.2;
+            opacity: 0.8;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-200px);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+
+        .code-snippet {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 11px;
+        }
+
+        /* Floating Laptops */
+        .laptop-float {
+            position: fixed;
+            font-size: 60px;
+            animation: laptopFloat 20s linear infinite;
+            z-index: -1;
+            filter: drop-shadow(0 0 20px var(--neon-pink));
+            opacity: 0.7;
+        }
+
+        @keyframes laptopFloat {
+            0% {
+                transform: translateX(-100px) translateY(100vh) rotate(0deg) scale(0.5);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateX(100vw) translateY(-100px) rotate(360deg) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        /* Glitch Effect */
+        .glitch {
+            position: relative;
+            color: var(--neon-pink);
+            text-shadow: 
+                0 0 2px var(--neon-pink),
+                0 0 4px var(--neon-pink);
+        }
+
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .glitch::before {
+            animation: glitch-1 2s infinite;
+            color: var(--cyber-blue);
+            z-index: -1;
+        }
+
+        .glitch::after {
+            animation: glitch-2 2s infinite;
+            color: var(--matrix-green);
+            z-index: -2;
+        }
+
+        @keyframes glitch-1 {
+            0%, 14%, 15%, 49%, 50%, 99%, 100% {
+                transform: translate(0);
+            }
+            15%, 49% {
+                transform: translate(-2px, 2px);
+            }
+        }
+
+        @keyframes glitch-2 {
+            0%, 20%, 21%, 62%, 63%, 99%, 100% {
+                transform: translate(0);
+            }
+            21%, 62% {
+                transform: translate(2px, -2px);
+            }
+        }
+
+        /* Neon Glow Effects */
+        .neon-glow {
+            box-shadow: 
+                0 0 5px var(--neon-pink),
+                0 0 10px var(--neon-pink),
+                0 0 15px var(--neon-pink),
+                0 0 20px var(--neon-pink),
+                inset 0 0 5px var(--neon-pink);
+            border: 1px solid var(--neon-pink);
+        }
+
+        .neon-text {
+            color: var(--neon-pink);
+            text-shadow: 
+                0 0 3px var(--neon-pink),
+                0 0 6px var(--neon-pink);
+        }
+
+        /* Holographic Cards */
+        .holo-card {
+            background: linear-gradient(45deg, 
+                rgba(255, 20, 147, 0.1), 
+                rgba(255, 105, 180, 0.1), 
+                rgba(255, 192, 203, 0.1));
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 20, 147, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .holo-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.2), 
+                transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        /* Particle System */
+        .particle {
+            position: fixed;
+            pointer-events: none;
+            border-radius: 50%;
+            animation: particleFloat 6s linear infinite;
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) scale(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) scale(1) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Typing Animation */
+        .typing-animation {
+            border-right: 2px solid var(--neon-pink);
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { border-color: var(--neon-pink); }
+            51%, 100% { border-color: transparent; }
+        }
+
+        /* Skill Bars with Neon Effect */
+        .skill-bar {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .skill-progress {
+            height: 12px;
+            background: linear-gradient(90deg, var(--neon-pink), var(--cyber-blue));
+            border-radius: 10px;
+            position: relative;
+            animation: skillGlow 2s ease-out;
+            box-shadow: 0 0 10px var(--neon-pink);
+        }
+
+        @keyframes skillGlow {
+            0% { width: 0%; }
+        }
+
+        /* Floating Navigation */
+        .floating-nav {
+            position: fixed;
+            top: 50%;
+            right: 30px;
+            transform: translateY(-50%);
+            z-index: 1000;
+        }
+
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 20, 147, 0.5);
+            margin: 15px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-dot.active {
+            background: var(--neon-pink);
+            box-shadow: 0 0 15px var(--neon-pink);
+            transform: scale(1.5);
+        }
+
+        .nav-dot::after {
+            content: attr(data-section);
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: var(--neon-pink);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .nav-dot:hover::after {
+            opacity: 1;
+        }
+
+        /* 3D Hover Effects */
+        .card-3d {
+            transform-style: preserve-3d;
+            transition: transform 0.3s ease;
+        }
+
+        .card-3d:hover {
+            transform: rotateY(10deg) rotateX(10deg) translateZ(20px);
+        }
+
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #000000, #1a0a1a, #2a0a2a);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            transition: opacity 0.8s ease-out;
+        }
+
+        .loading-text {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            animation: pulse 2s infinite;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .loading-bar {
+            width: 400px;
+            height: 6px;
+            background: rgba(255, 20, 147, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 20, 147, 0.4);
+        }
+
+        .loading-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--neon-pink), var(--cyber-blue), var(--matrix-green));
+            border-radius: 10px;
+            animation: loadingProgress 4s ease-out forwards;
+            box-shadow: 0 0 20px var(--neon-pink);
+        }
+
+        @keyframes loadingProgress {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+
+        .loading-dots {
+            display: flex;
+            gap: 10px;
+            margin-top: 2rem;
+        }
+
+        .loading-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--neon-pink);
+            animation: loadingDots 1.5s infinite;
+        }
+
+        .loading-dot:nth-child(2) { animation-delay: 0.2s; }
+        .loading-dot:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes loadingDots {
+            0%, 80%, 100% { transform: scale(0.8); opacity: 0.5; }
+            40% { transform: scale(1.2); opacity: 1; }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, var(--neon-pink), var(--cyber-blue));
+            border-radius: 4px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .floating-nav {
+                display: none;
+            }
+            
+            .laptop-float {
+                font-size: 40px;
+            }
+            
+            .code-column {
+                font-size: 12px;
+            }
+        }
+
+        /* Terminal Effect */
+        .terminal {
+            background: rgba(0, 0, 0, 0.9);
+            border: 1px solid var(--neon-pink);
+            border-radius: 10px;
+            padding: 20px;
+            font-family: 'Fira Code', monospace;
+            color: var(--matrix-green);
+            position: relative;
+        }
+
+        .terminal::before {
+            content: '● ● ●';
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            color: var(--neon-pink);
+            font-size: 12px;
+        }
+
+        .terminal-line {
+            margin: 10px 0;
+            opacity: 0;
+            animation: terminalType 0.5s ease forwards;
+        }
+
+        @keyframes terminalType {
+            to { opacity: 1; }
+        }
+
+        /* Matrix Rain Effect */
+        .matrix-char {
+            color: var(--neon-pink);
+            text-shadow: 0 0 10px var(--neon-pink);
+            animation: matrixFade 2s linear infinite;
+        }
+
+        @keyframes matrixFade {
+            0% { opacity: 1; color: var(--neon-pink); }
+            50% { opacity: 0.5; color: var(--cyber-blue); }
+            100% { opacity: 0.2; color: var(--matrix-green); }
+        }
+
+        /* Hologram Effect */
+        .hologram {
+            position: relative;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 20, 147, 0.1) 50%, transparent 70%);
+            background-size: 20px 20px;
+            animation: hologramMove 2s linear infinite;
+        }
+
+        @keyframes hologramMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 20px 20px; }
+        }
+    </style>
+</head>
+<body class="bg-black text-white overflow-x-hidden">
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-text neon-text cyber-font">INITIALIZING PORTFOLIO SYSTEM...</div>
+        <div class="loading-bar">
+            <div class="loading-progress"></div>
+        </div>
+        <div class="loading-dots">
+            <div class="loading-dot"></div>
+            <div class="loading-dot"></div>
+            <div class="loading-dot"></div>
+        </div>
+        <div class="mt-6 code-font text-sm neon-text text-center">
+            <div id="loadingStep">Loading components...</div>
+        </div>
+    </div>
+
+    <!-- Matrix Background -->
+    <div class="matrix-bg"></div>
+
+    <!-- Code Rain -->
+    <div class="code-rain" id="codeRain"></div>
+
+    <!-- Floating Laptops -->
+    <div class="laptop-float" style="left: 10%; animation-delay: 0s;">💻</div>
+    <div class="laptop-float" style="left: 30%; animation-delay: 3s;">🖥️</div>
+    <div class="laptop-float" style="left: 50%; animation-delay: 6s;">💻</div>
+    <div class="laptop-float" style="left: 70%; animation-delay: 9s;">🖥️</div>
+    <div class="laptop-float" style="left: 90%; animation-delay: 12s;">💻</div>
+
+    <!-- Floating Navigation -->
+    <div class="floating-nav">
+        <div class="nav-dot active" data-section="Home" onclick="scrollToSection('home')"></div>
+        <div class="nav-dot" data-section="About" onclick="scrollToSection('about')"></div>
+        <div class="nav-dot" data-section="Skills" onclick="scrollToSection('skills')"></div>
+        <div class="nav-dot" data-section="Projects" onclick="scrollToSection('projects')"></div>
+        <div class="nav-dot" data-section="Experience" onclick="scrollToSection('experience')"></div>
+        <div class="nav-dot" data-section="Contact" onclick="scrollToSection('contact')"></div>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav class="fixed top-0 w-full z-50 holo-card">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold neon-text cyber-font">QVV</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="neon-text hover:text-white transition-colors">Home</a>
+                    <a href="#about" class="neon-text hover:text-white transition-colors">About</a>
+                    <a href="#skills" class="neon-text hover:text-white transition-colors">Skills</a>
+                    <a href="#projects" class="neon-text hover:text-white transition-colors">Projects</a>
+                    <a href="#experience" class="neon-text hover:text-white transition-colors">Experience</a>
+                    <a href="#contact" class="neon-text hover:text-white transition-colors">Contact</a>
+                </div>
+                <button id="menuBtn" class="md:hidden neon-text text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed inset-0 z-40 holo-card hidden">
+        <div class="flex flex-col items-center justify-center h-full space-y-8 text-2xl">
+            <a href="#home" class="neon-text hover:text-white transition-colors mobile-link">Home</a>
+            <a href="#about" class="neon-text hover:text-white transition-colors mobile-link">About</a>
+            <a href="#skills" class="neon-text hover:text-white transition-colors mobile-link">Skills</a>
+            <a href="#projects" class="neon-text hover:text-white transition-colors mobile-link">Projects</a>
+            <a href="#experience" class="neon-text hover:text-white transition-colors mobile-link">Experience</a>
+            <a href="#contact" class="neon-text hover:text-white transition-colors mobile-link">Contact</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center relative">
+        <div class="text-center px-6 z-10">
+            <div class="mb-8">
+                <h1 class="text-6xl md:text-8xl font-bold mb-4 glitch cyber-font" data-text="QUENNIE">
+                    QUENNIE
+                </h1>
+                <h2 class="text-4xl md:text-6xl font-bold mb-4 neon-text cyber-font">
+                    VILLARUEL VALENZUELA
+                </h2>
+                <div class="text-2xl md:text-3xl mb-8 code-font">
+                    <span class="neon-text">&gt;</span>
+                    <span id="typingText" class="typing-animation"></span>
+                </div>
+            </div>
+            
+            <div class="terminal mb-8 max-w-2xl mx-auto">
+               
+                <div class="terminal-line" style="animation-delay: 1s;">programmer@universe:~$ Initializing...</div>
+                <div class="terminal-line" style="animation-delay: 1.5s;">Loading: Software Analyst & Full-Stack Developer</div>
+                <div class="terminal-line" style="animation-delay: 2s;">Status: Ready to create digital magic ✨</div>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-6 justify-center">
+                <button onclick="scrollToSection('projects')" class="neon-glow px-8 py-4 rounded-lg text-lg font-semibold cyber-font hover:scale-105 transition-transform">
+                    <i class="fas fa-rocket mr-2"></i>VIEW PROJECTS
+                </button>
+                <button onclick="scrollToSection('contact')" class="border border-pink-500 px-8 py-4 rounded-lg text-lg font-semibold cyber-font hover:bg-pink-500 hover:text-black transition-all">
+                    <i class="fas fa-satellite-dish mr-2"></i>CONNECT
+                </button>
+            </div>
+        </div>
+
+        <!-- Floating Code Snippets -->
+        <div class="absolute top-20 left-10 code-font text-sm neon-text opacity-50 animate-pulse">
+            const magic = () => { return "✨"; }
+        </div>
+        <div class="absolute bottom-20 right-10 code-font text-sm neon-text opacity-50 animate-pulse">
+            while(coding) { dreams.push(reality); }
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 relative">
+        <div class="container mx-auto px-6">
+            <h2 class="text-5xl font-bold text-center mb-16 glitch cyber-font" data-text="ABOUT">ABOUT</h2>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="holo-card p-8 rounded-3xl card-3d">
+                    <h3 class="text-3xl font-bold mb-6 neon-text cyber-font">Digital Architect</h3>
+                    <p class="text-lg leading-relaxed mb-6 text-white font-medium">
+                        I'm a quantum-level programmer who transforms complex algorithms into elegant solutions. 
+                        With expertise spanning full-stack development, data analysis, and software architecture, 
+                        I build applications that don't just work—they inspire.
+                    </p>
+                    <p class="text-lg leading-relaxed text-white font-medium">
+                        My code is my canvas, and every project is a masterpiece of logic, creativity, and innovation. 
+                        I specialize in creating digital experiences that push the boundaries of what's possible.
+                    </p>
+                    
+                    <div class="mt-8 grid grid-cols-2 gap-4">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold neon-text">5+</div>
+                            <div class="text-sm">Years Experience</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold neon-text">100+</div>
+                            <div class="text-sm">Projects Completed</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold neon-text">50+</div>
+                            <div class="text-sm">Technologies Mastered</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold neon-text">∞</div>
+                            <div class="text-sm">Lines of Code</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="holo-card p-6 rounded-2xl card-3d">
+                        <h4 class="text-xl font-bold mb-4 neon-text">Core Expertise</h4>
+                        <div class="space-y-3">
+                            <div class="flex items-center">
+                                <i class="fas fa-code neon-text mr-3"></i>
+                                <span class="text-white font-medium">Full-Stack Development</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-database neon-text mr-3"></i>
+                                <span class="text-white font-medium">Data Analysis & Visualization</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-brain neon-text mr-3"></i>
+                                <span class="text-white font-medium">AI/ML Implementation</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-cloud neon-text mr-3"></i>
+                                <span class="text-white font-medium">Cloud Architecture</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="holo-card p-6 rounded-2xl card-3d">
+                        <h4 class="text-xl font-bold mb-4 neon-text">Philosophy</h4>
+                        <p class="italic text-white font-medium text-lg">
+                            "Code is poetry written in logic. Every algorithm tells a story, 
+                            every function solves a puzzle, and every application creates possibilities."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 relative">
+        <div class="container mx-auto px-6">
+            <h2 class="text-5xl font-bold text-center mb-16 glitch cyber-font" data-text="SKILLS">SKILLS</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Programming Languages -->
+                <div class="holo-card p-8 rounded-3xl card-3d hologram">
+                    <h3 class="text-2xl font-bold mb-6 neon-text cyber-font">
+                        <i class="fas fa-code mr-3"></i>Languages
+                    </h3>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="code-font">JavaScript/TypeScript</span>
+                                <span class="neon-text">98%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 98%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="code-font">Python</span>
+                                <span class="neon-text">95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="code-font">Java</span>
+                                <span class="neon-text">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="code-font">C#/.NET</span>
+                                <span class="neon-text">88%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 88%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="code-font">Go/Rust</span>
+                                <span class="neon-text">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Frameworks & Technologies -->
+                <div class="holo-card p-8 rounded-3xl card-3d hologram">
+                    <h3 class="text-2xl font-bold mb-6 neon-text cyber-font">
+                        <i class="fas fa-layer-group mr-3"></i>Frameworks
+                    </h3>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="code-font">React/Next.js</span>
+                                <span class="neon-text">96%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 96%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="code-font">Node.js/Express</span>
+                                <span class="neon-text">94%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 94%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="code-font">Vue.js/Nuxt</span>
+                                <span class="neon-text">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="code-font">Django/Flask</span>
+                                <span class="neon-text">92%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 92%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="code-font">Spring Boot</span>
+                                <span class="neon-text">87%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 87%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Data & Cloud -->
+                <div class="holo-card p-8 rounded-3xl card-3d hologram">
+                    <h3 class="text-2xl font-bold mb-6 neon-text cyber-font">
+                        <i class="fas fa-cloud mr-3"></i>Data & Cloud
+                    </h3>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="code-font">AWS/Azure/GCP</span>
+                                <span class="neon-text">93%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 93%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="code-font">Docker/Kubernetes</span>
+                                <span class="neon-text">91%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 91%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="code-font">MongoDB/PostgreSQL</span>
+                                <span class="neon-text">95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="code-font">TensorFlow/PyTorch</span>
+                                <span class="neon-text">88%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 88%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="code-font">Tableau/Power BI</span>
+                                <span class="neon-text">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Skills Matrix -->
+            <div class="mt-16 holo-card p-8 rounded-3xl">
+                <h3 class="text-3xl font-bold mb-8 text-center neon-text cyber-font">Technology Matrix</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                    <div class="text-center p-4 border border-pink-500 rounded-lg hover:bg-pink-500 hover:text-black transition-all">
+                        <i class="fab fa-react text-2xl mb-2"></i>
+                        <div class="text-sm">React</div>
+                    </div>
+                    <div class="text-center p-4 border border-pink-500 rounded-lg hover:bg-pink-500 hover:text-black transition-all">
+                        <i class="fab fa-node-js text-2xl mb-2"></i>
+                        <div class="text-sm">Node.js</div>
+                    </div>
+                    <div class="text-center p-4 border border-pink-500 rounded-lg hover:bg-pink-500 hover:text-black transition-all">
+                        <i class="fab fa-python text-2xl mb-2"></i>
+                        <div class="text-sm">Python</div>
+                    </div>
+                    <div class="text-center p-4 border border-pink-500 rounded-lg hover:bg-pink-500 hover:text-black transition-all">
+                        <i class="fab fa-aws text-2xl mb-2"></i>
+                        <div class="text-sm">AWS</div>
+                    </div>
+                    <div class="text-center p-4 border border-pink-500 rounded-lg hover:bg-pink-500 hover:text-black transition-all">
+                        <i class="fab fa-docker text-2xl mb-2"></i>
+                        <div class="text-sm">Docker</div>
+                    </div>
+                    <div class="text-center p-4 border border-pink-500 rounded-lg hover:bg-pink-500 hover:text-black transition-all">
+                        <i class="fas fa-database text-2xl mb-2"></i>
+                        <div class="text-sm">Databases</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 relative">
+        <div class="container mx-auto px-6">
+            <h2 class="text-5xl font-bold text-center mb-16 glitch cyber-font" data-text="PROJECTS">PROJECTS</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="holo-card rounded-3xl overflow-hidden card-3d group">
+                    <div class="p-6">
+                        <div class="text-4xl mb-4 neon-text">🚀</div>
+                        <h3 class="text-2xl font-bold mb-4 cyber-font">QuantumCommerce</h3>
+                        <p class="mb-6 text-white font-medium">Next-generation e-commerce platform with AI-powered recommendations, real-time analytics, and quantum-secure payments.</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm code-font">React</span>
+                            <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm code-font">Node.js</span>
+                            <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm code-font">AI/ML</span>
+                            <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm code-font">Blockchain</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <button onclick="openProjectModal('project1')" class="flex-1 neon-glow py-2 rounded-lg transition-all hover:scale-105">
+                                View Details
+                            </button>
+                            <button class="px-4 py-2 border border-pink-500 rounded-lg hover:bg-pink-500 hover:text-black transition-all">
+                                <i class="fab fa-github"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="holo-card rounded-3xl overflow-hidden card-3d group">
+                    <div class="p-6">
+                        <div class="text-4xl mb-4 neon-text">🧠</div>
+                        <h3 class="text-2xl font-bold mb-4 cyber-font">NeuralAnalytics</h3>
+                        <p class="mb-6 text-white font-medium">Advanced data analytics platform with machine learning models, predictive algorithms, and real-time visualization dashboards.</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm code-font">Python</span>
+                            <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm code-font">TensorFlow</span>
+                            <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm code-font">D3.js</span>
+                            <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm code-font">AWS</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <button onclick="openProjectModal('project2')" class="flex-1 neon-glow py-2 rounded-lg transition-all hover:scale-105">
+                                View Details
+                            </button>
+                            <button class="px-4 py-2 border border-pink-500 rounded-lg hover:bg-pink-500 hover:text-black transition-all">
+                                <i class="fab fa-github"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="holo-card rounded-3xl overflow-hidden card-3d group">
+                    <div class="p-6">
+                        <div class="text-4xl mb-4 neon-text">🌐</div>
+                        <h3 class="text-2xl font-bold mb-4 cyber-font">CloudMesh</h3>
+                        <p class="mb-6 text-white font-medium">Distributed cloud infrastructure with microservices architecture, auto-scaling, and quantum encryption protocols.</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm code-font">Kubernetes</span>
+                            <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm code-font">Go</span>
+                            <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm code-font">Docker</span>
+                            <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm code-font">gRPC</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <button onclick="openProjectModal('project3')" class="flex-1 neon-glow py-2 rounded-lg transition-all hover:scale-105">
+                                View Details
+                            </button>
+                            <button class="px-4 py-2 border border-pink-500 rounded-lg hover:bg-pink-500 hover:text-black transition-all">
+                                <i class="fab fa-github"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="holo-card rounded-3xl overflow-hidden card-3d group">
+                    <div class="p-6">
+                        <div class="text-4xl mb-4 neon-text">🤖</div>
+                        <h3 class="text-2xl font-bold mb-4 cyber-font">CyberAssistant</h3>
+                        <p class="mb-6 text-white font-medium">AI-powered virtual assistant with natural language processing, voice recognition, and quantum learning capabilities.</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm code-font">Python</span>
+                            <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm code-font">NLP</span>
+                            <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm code-font">PyTorch</span>
+                            <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm code-font">WebRTC</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <button onclick="openProjectModal('project4')" class="flex-1 neon-glow py-2 rounded-lg transition-all hover:scale-105">
+                                View Details
+                            </button>
+                            <button class="px-4 py-2 border border-pink-500 rounded-lg hover:bg-pink-500 hover:text-black transition-all">
+                                <i class="fab fa-github"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="holo-card rounded-3xl overflow-hidden card-3d group">
+                    <div class="p-6">
+                        <div class="text-4xl mb-4 neon-text">🔐</div>
+                        <h3 class="text-2xl font-bold mb-4 cyber-font">SecureVault</h3>
+                        <p class="mb-6 text-white font-medium">Quantum-encrypted security platform with biometric authentication, blockchain verification, and zero-trust architecture.</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm code-font">Rust</span>
+                            <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm code-font">Blockchain</span>
+                            <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm code-font">WebAssembly</span>
+                            <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm code-font">Cryptography</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <button onclick="openProjectModal('project5')" class="flex-1 neon-glow py-2 rounded-lg transition-all hover:scale-105">
+                                View Details
+                            </button>
+                            <button class="px-4 py-2 border border-pink-500 rounded-lg hover:bg-pink-500 hover:text-black transition-all">
+                                <i class="fab fa-github"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="holo-card rounded-3xl overflow-hidden card-3d group">
+                    <div class="p-6">
+                        <div class="text-4xl mb-4 neon-text">🎮</div>
+                        <h3 class="text-2xl font-bold mb-4 cyber-font">MetaVerse Engine</h3>
+                        <p class="mb-6 text-white font-medium">3D metaverse platform with virtual reality integration, blockchain assets, and real-time multiplayer interactions.</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm code-font">Unity</span>
+                            <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm code-font">C#</span>
+                            <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm code-font">WebGL</span>
+                            <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm code-font">NFT</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <button onclick="openProjectModal('project6')" class="flex-1 neon-glow py-2 rounded-lg transition-all hover:scale-105">
+                                View Details
+                            </button>
+                            <button class="px-4 py-2 border border-pink-500 rounded-lg hover:bg-pink-500 hover:text-black transition-all">
+                                <i class="fab fa-github"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 relative">
+        <div class="container mx-auto px-6">
+            <h2 class="text-5xl font-bold text-center mb-16 glitch cyber-font" data-text="EXPERIENCE">EXPERIENCE</h2>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="relative">
+                    <div class="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-pink-400 to-cyan-400"></div>
+                    
+                    <!-- Experience Item 1 -->
+                    <div class="relative flex items-center mb-12">
+                        <div class="w-1/2 pr-8 text-right">
+                            <div class="holo-card p-6 rounded-3xl card-3d">
+                                <h3 class="text-2xl font-bold mb-2 cyber-font neon-text">Senior Quantum Developer</h3>
+                                <p class="text-pink-100 mb-2">TechNova Industries</p>
+                                <p class="text-sm mb-4 code-font">2023 - Present</p>
+                                <p class="text-white font-medium">Leading development of quantum computing applications, implementing AI-driven solutions, and architecting next-generation software systems.</p>
+                                <div class="mt-4 flex flex-wrap gap-2 justify-end">
+                                    <span class="px-2 py-1 bg-pink-500 text-black rounded text-xs">Quantum Computing</span>
+                                    <span class="px-2 py-1 bg-pink-500 text-black rounded text-xs">AI/ML</span>
+                                    <span class="px-2 py-1 bg-pink-500 text-black rounded text-xs">Cloud Architecture</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-pink-500 rounded-full border-4 border-black neon-glow"></div>
+                        <div class="w-1/2 pl-8"></div>
+                    </div>
+
+                    <!-- Experience Item 2 -->
+                    <div class="relative flex items-center mb-12">
+                        <div class="w-1/2 pr-8"></div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-cyan-400 rounded-full border-4 border-black neon-glow"></div>
+                        <div class="w-1/2 pl-8">
+                            <div class="holo-card p-6 rounded-3xl card-3d">
+                                <h3 class="text-2xl font-bold mb-2 cyber-font neon-text">Full-Stack Architect</h3>
+                                <p class="text-pink-100 mb-2">CyberSoft Solutions</p>
+                                <p class="text-sm mb-4 code-font">2021 - 2023</p>
+                                <p class="text-white font-medium">Designed and implemented scalable web applications, led cross-functional teams, and optimized system performance by 300%.</p>
+                                <div class="mt-4 flex flex-wrap gap-2">
+                                    <span class="px-2 py-1 bg-cyan-400 text-black rounded text-xs">React/Node.js</span>
+                                    <span class="px-2 py-1 bg-cyan-400 text-black rounded text-xs">Microservices</span>
+                                    <span class="px-2 py-1 bg-cyan-400 text-black rounded text-xs">DevOps</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Experience Item 3 -->
+                    <div class="relative flex items-center mb-12">
+                        <div class="w-1/2 pr-8 text-right">
+                            <div class="holo-card p-6 rounded-3xl card-3d">
+                                <h3 class="text-2xl font-bold mb-2 cyber-font neon-text">Data Science Engineer</h3>
+                                <p class="text-pink-100 mb-2">Analytics Pro</p>
+                                <p class="text-sm mb-4 code-font">2019 - 2021</p>
+                                <p class="text-white font-medium">Built machine learning models, created data pipelines, and developed predictive analytics solutions for enterprise clients.</p>
+                                <div class="mt-4 flex flex-wrap gap-2 justify-end">
+                                    <span class="px-2 py-1 bg-green-400 text-black rounded text-xs">Python/R</span>
+                                    <span class="px-2 py-1 bg-green-400 text-black rounded text-xs">TensorFlow</span>
+                                    <span class="px-2 py-1 bg-green-400 text-black rounded text-xs">Big Data</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-green-400 rounded-full border-4 border-black neon-glow"></div>
+                        <div class="w-1/2 pl-8"></div>
+                    </div>
+
+                    <!-- Experience Item 4 -->
+                    <div class="relative flex items-center">
+                        <div class="w-1/2 pr-8"></div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-yellow-400 rounded-full border-4 border-black neon-glow"></div>
+                        <div class="w-1/2 pl-8">
+                            <div class="holo-card p-6 rounded-3xl card-3d">
+                                <h3 class="text-2xl font-bold mb-2 cyber-font neon-text">Software Developer</h3>
+                                <p class="text-pink-100 mb-2">StartupLab</p>
+                                <p class="text-sm mb-4 code-font">2018 - 2019</p>
+                                <p class="text-white font-medium">Developed web applications, mobile apps, and contributed to open-source projects while building foundational expertise.</p>
+                                <div class="mt-4 flex flex-wrap gap-2">
+                                    <span class="px-2 py-1 bg-yellow-400 text-black rounded text-xs">JavaScript</span>
+                                    <span class="px-2 py-1 bg-yellow-400 text-black rounded text-xs">React Native</span>
+                                    <span class="px-2 py-1 bg-yellow-400 text-black rounded text-xs">APIs</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 relative">
+        <div class="container mx-auto px-6">
+            <h2 class="text-5xl font-bold text-center mb-16 glitch cyber-font" data-text="CONTACT">CONTACT</h2>
+            
+            <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div class="holo-card p-8 rounded-3xl card-3d">
+                    <h3 class="text-3xl font-bold mb-6 neon-text cyber-font">Initialize Connection</h3>
+                    <form id="contactForm" class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-bold mb-2 code-font">Name</label>
+                            <input type="text" id="name" class="w-full p-4 rounded-xl bg-black/50 border border-pink-500 focus:border-cyan-400 focus:outline-none transition-colors neon-glow">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold mb-2 code-font">Email.protocol</label>
+                            <input type="email" id="email" class="w-full p-4 rounded-xl bg-black/50 border border-pink-500 focus:border-cyan-400 focus:outline-none transition-colors neon-glow">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold mb-2 code-font">Message.data</label>
+                            <textarea id="message" rows="5" class="w-full p-4 rounded-xl bg-black/50 border border-pink-500 focus:border-cyan-400 focus:outline-none transition-colors resize-none neon-glow"></textarea>
+                        </div>
+                        <button type="submit" class="w-full neon-glow py-4 rounded-xl font-semibold cyber-font hover:scale-105 transition-transform">
+                            <i class="fas fa-paper-plane mr-2"></i>TRANSMIT MESSAGE
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact Info & Social -->
+                <div class="space-y-8">
+                    <div class="holo-card p-8 rounded-3xl card-3d">
+                        <h3 class="text-3xl font-bold mb-6 neon-text cyber-font">Connection Protocols</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-center">
+                                <i class="fas fa-envelope neon-text text-2xl mr-4"></i>
+                                <div>
+                                    <p class="font-semibold code-font">Email.address</p>
+                                    <p class="text-white font-medium">quennie.valenzuela@quantum.dev</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-phone neon-text text-2xl mr-4"></i>
+                                <div>
+                                    <p class="font-semibold code-font">Voice.channel</p>
+                                    <p class="text-gray-100 font-medium">+1 (555) QUANTUM</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-map-marker-alt neon-text text-2xl mr-4"></i>
+                                <div>
+                                    <p class="font-semibold code-font">Location.coords</p>
+                                    <p class="text-gray-100 font-medium">Digital Dimension</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-clock neon-text text-2xl mr-4"></i>
+                                <div>
+                                    <p class="font-semibold code-font">Timezone.active</p>
+                                    <p class="text-gray-100 font-medium">24/7 Quantum Time</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="holo-card p-8 rounded-3xl card-3d">
+                        <h3 class="text-2xl font-bold mb-6 neon-text cyber-font">Social.networks</h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <a href="#" class="flex items-center justify-center p-4 border border-pink-500 rounded-lg hover:bg-pink-500 hover:text-black transition-all group">
+                                <i class="fab fa-linkedin text-2xl mr-3 group-hover:scale-110 transition-transform"></i>
+                                <span class="code-font">LinkedIn</span>
+                            </a>
+                            <a href="#" class="flex items-center justify-center p-4 border border-pink-500 rounded-lg hover:bg-pink-500 hover:text-black transition-all group">
+                                <i class="fab fa-github text-2xl mr-3 group-hover:scale-110 transition-transform"></i>
+                                <span class="code-font">GitHub</span>
+                            </a>
+                            <a href="#" class="flex items-center justify-center p-4 border border-pink-500 rounded-lg hover:bg-pink-500 hover:text-black transition-all group">
+                                <i class="fab fa-twitter text-2xl mr-3 group-hover:scale-110 transition-transform"></i>
+                                <span class="code-font">Twitter</span>
+                            </a>
+                            <a href="#" class="flex items-center justify-center p-4 border border-pink-500 rounded-lg hover:bg-pink-500 hover:text-black transition-all group">
+                                <i class="fab fa-discord text-2xl mr-3 group-hover:scale-110 transition-transform"></i>
+                                <span class="code-font">Discord</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="terminal">
+                        <div class="terminal-line" style="animation-delay: 0.5s;">$ status --connection</div>
+                        <div class="terminal-line" style="animation-delay: 1s;">Status: Online and ready to collaborate</div>
+                        <div class="terminal-line" style="animation-delay: 1.5s;">Response time: &lt; 24 hours</div>
+                        <div class="terminal-line" style="animation-delay: 2s;">Availability: Open for new projects ✨</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 relative">
+        <div class="container mx-auto px-6 text-center">
+            <div class="holo-card p-8 rounded-3xl">
+                <p class="text-lg mb-4 cyber-font">
+                    <span class="neon-text">Crafted with quantum precision by</span>
+                    <span class="glitch" data-text="QUENNIE VILLARUEL VALENZUELA">QUENNIE VILLARUEL VALENZUELA</span>
+                </p>
+                <p class="text-pink-100 code-font">
+                    © 2024 | Version 2.0.24 | All rights reserved in this dimension and beyond
+                </p>
+                <div class="mt-4 text-sm opacity-70">
+                    <span class="code-font">while(true) { code(); dream(); innovate(); }</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Project Modal -->
+    <div id="projectModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4" style="background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(15px);">
+        <div class="holo-card rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto relative">
+            <button onclick="closeProjectModal()" class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-black/80 border border-pink-500 text-white hover:text-pink-300 hover:bg-pink-500/20 transition-all flex items-center justify-center">
+                <i class="fas fa-times text-lg"></i>
+            </button>
+            <div class="p-8 pr-16">
+                <div class="mb-6">
+                    <h3 id="modalTitle" class="text-3xl font-bold neon-text cyber-font"></h3>
+                </div>
+                <div id="modalContent" class="text-white">
+                    <!-- Modal content will be inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Loading screen with sequence
+        window.addEventListener('load', function() {
+            const loadingSteps = [
+                'Loading components...',
+                'Initializing systems...',
+                'Connecting to servers...',
+                'Preparing interface...',
+                'Almost ready...',
+                'Welcome!'
+            ];
+            
+            let stepIndex = 0;
+            const loadingStepElement = document.getElementById('loadingStep');
+            
+            const stepInterval = setInterval(() => {
+                if (stepIndex < loadingSteps.length) {
+                    loadingStepElement.textContent = loadingSteps[stepIndex];
+                    stepIndex++;
+                } else {
+                    clearInterval(stepInterval);
+                }
+            }, 600);
+            
+            setTimeout(() => {
+                const loadingScreen = document.getElementById('loadingScreen');
+                loadingScreen.style.opacity = '0';
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                }, 800);
+            }, 4000);
+        });
+
+        // Typing animation
+        const texts = [
+            "Quantum Programmer & Software Architect",
+            "Full-Stack Developer & Data Scientist", 
+            "AI/ML Engineer & Cloud Specialist",
+            "Digital Innovation Catalyst"
+        ];
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function typeWriter() {
+            const currentText = texts[textIndex];
+            const typingElement = document.getElementById('typingText');
+            
+            if (isDeleting) {
+                typingElement.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingElement.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            if (!isDeleting && charIndex === currentText.length) {
+                setTimeout(() => isDeleting = true, 2000);
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % texts.length;
+            }
+
+            setTimeout(typeWriter, isDeleting ? 50 : 100);
+        }
+
+        typeWriter();
+
+        // Code rain effect with realistic programming snippets
+        function createCodeRain() {
+            const codeRain = document.getElementById('codeRain');
+            const codeSnippets = [
+                `function calculateSum(arr) {
+  return arr.reduce((a, b) => a + b, 0);
+}`,
+                `class DataProcessor {
+  constructor(data) {
+    this.data = data;
+  }
+  
+  process() {
+    return this.data.map(item => ({
+      ...item,
+      processed: true
+    }));
+  }
+}`,
+                `const fetchUserData = async (id) => {
+  try {
+    const response = await fetch(\`/api/users/\${id}\`);
+    return await response.json();
+  } catch (error) {
+    console.error('Error:', error);
+    return null;
+  }
+};`,
+                `import React, { useState, useEffect } from 'react';
+
+const UserProfile = ({ userId }) => {
+  const [user, setUser] = useState(null);
+  
+  useEffect(() => {
+    fetchUserData(userId).then(setUser);
+  }, [userId]);
+  
+  return (
+    <div className="profile">
+      {user ? <h1>{user.name}</h1> : <p>Loading...</p>}
+    </div>
+  );
+};`,
+                `def binary_search(arr, target):
+    left, right = 0, len(arr) - 1
+    
+    while left <= right:
+        mid = (left + right) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    
+    return -1`,
+                `SELECT u.name, COUNT(o.id) as order_count
+FROM users u
+LEFT JOIN orders o ON u.id = o.user_id
+WHERE u.created_at >= '2024-01-01'
+GROUP BY u.id, u.name
+HAVING COUNT(o.id) > 5
+ORDER BY order_count DESC;`,
+                `public class QuickSort {
+    public static void quickSort(int[] arr, int low, int high) {
+        if (low < high) {
+            int pi = partition(arr, low, high);
+            quickSort(arr, low, pi - 1);
+            quickSort(arr, pi + 1, high);
+        }
+    }
+    
+    private static int partition(int[] arr, int low, int high) {
+        int pivot = arr[high];
+        int i = (low - 1);
+        
+        for (int j = low; j < high; j++) {
+            if (arr[j] < pivot) {
+                i++;
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+        
+        int temp = arr[i + 1];
+        arr[i + 1] = arr[high];
+        arr[high] = temp;
+        
+        return i + 1;
+    }
+}`,
+                `package main
+
+import (
+    "fmt"
+    "net/http"
+    "encoding/json"
+)
+
+type User struct {
+    ID   int    \`json:"id"\`
+    Name string \`json:"name"\`
+    Email string \`json:"email"\`
+}
+
+func getUserHandler(w http.ResponseWriter, r *http.Request) {
+    user := User{ID: 1, Name: "John", Email: "john@example.com"}
+    w.Header().Set("Content-Type", "application/json")
+    json.NewEncoder(w).Encode(user)
+}`,
+                `#include <iostream>
+#include <vector>
+#include <algorithm>
+
+class Matrix {
+private:
+    std::vector<std::vector<int>> data;
+    int rows, cols;
+
+public:
+    Matrix(int r, int c) : rows(r), cols(c) {
+        data.resize(rows, std::vector<int>(cols, 0));
+    }
+    
+    void multiply(const Matrix& other) {
+        if (cols != other.rows) return;
+        
+        std::vector<std::vector<int>> result(rows, 
+            std::vector<int>(other.cols, 0));
+        
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < other.cols; j++) {
+                for (int k = 0; k < cols; k++) {
+                    result[i][j] += data[i][k] * other.data[k][j];
+                }
+            }
+        }
+        
+        data = result;
+        cols = other.cols;
+    }
+};`
+            ];
+
+            for (let i = 0; i < 8; i++) {
+                const column = document.createElement('div');
+                column.className = 'code-column matrix-char';
+                
+                const snippet = codeSnippets[Math.floor(Math.random() * codeSnippets.length)];
+                const lines = snippet.split('\n');
+                
+                column.innerHTML = lines.map(line => 
+                    `<span class="code-snippet">${line}</span>`
+                ).join('');
+                
+                column.style.left = Math.random() * 95 + '%';
+                column.style.animationDuration = (Math.random() * 4 + 6) + 's';
+                column.style.animationDelay = Math.random() * 3 + 's';
+                column.style.fontSize = (Math.random() * 2 + 10) + 'px';
+                
+                codeRain.appendChild(column);
+
+                setTimeout(() => {
+                    if (column.parentNode) {
+                        column.remove();
+                    }
+                }, 10000);
+            }
+        }
+
+        setInterval(createCodeRain, 800);
+
+        // Particle system
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + 'vw';
+            particle.style.width = particle.style.height = Math.random() * 4 + 2 + 'px';
+            particle.style.background = `hsl(${Math.random() * 60 + 300}, 70%, 70%)`;
+            particle.style.animationDuration = Math.random() * 3 + 3 + 's';
+            document.body.appendChild(particle);
+
+            setTimeout(() => {
+                particle.remove();
+            }, 6000);
+        }
+
+        setInterval(createParticle, 200);
+
+        // Navigation functionality
+        function scrollToSection(sectionId) {
+            const target = document.getElementById(sectionId);
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                setTimeout(() => {
+                    window.scrollBy(0, -80);
+                }, 500);
+            }
+        }
+
+        // Update active navigation dot
+        window.addEventListener('scroll', function() {
+            const sections = ['home', 'about', 'skills', 'projects', 'experience', 'contact'];
+            const navDots = document.querySelectorAll('.nav-dot');
+            
+            let current = '';
+            sections.forEach(section => {
+                const element = document.getElementById(section);
+                const rect = element.getBoundingClientRect();
+                if (rect.top <= 100 && rect.bottom >= 100) {
+                    current = section;
+                }
+            });
+
+            navDots.forEach((dot, index) => {
+                dot.classList.remove('active');
+                if (sections[index] === current) {
+                    dot.classList.add('active');
+                }
+            });
+        });
+
+        // Mobile menu
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Smooth scrolling for all navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const target = document.getElementById(targetId);
+                if (target) {
+                    const mobileMenu = document.getElementById('mobileMenu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                    
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    setTimeout(() => {
+                        window.scrollBy(0, -80);
+                    }, 500);
+                }
+            });
+        });
+
+        // Contact form
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            if (name && email && message) {
+                // Create success message
+                const successDiv = document.createElement('div');
+                successDiv.className = 'fixed top-20 right-4 holo-card p-4 rounded-lg text-white z-50';
+                successDiv.innerHTML = `
+                    <div class="flex items-center">
+                        <i class="fas fa-check-circle text-green-400 mr-3"></i>
+                        <span class="code-font">Message transmitted successfully! ✨</span>
+                    </div>
+                `;
+                document.body.appendChild(successDiv);
+                
+                setTimeout(() => {
+                    successDiv.remove();
+                }, 3000);
+                
+                this.reset();
+            }
+        });
+
+        // Project modal data
+        const projectData = {
+            project1: {
+                title: "QuantumCommerce 🚀",
+                content: `
+                    <div class="space-y-6">
+                        <p class="text-lg">Next-generation e-commerce platform powered by quantum algorithms and AI-driven personalization.</p>
+                        
+                        <div class="terminal">
+                            <div class="terminal-line">$ project --info QuantumCommerce</div>
+                            <div class="terminal-line">Status: Production Ready</div>
+                            <div class="terminal-line">Performance: 99.9% uptime</div>
+                            <div class="terminal-line">Users: 1M+ active</div>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-xl font-semibold mb-3 neon-text">Core Features:</h4>
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>Quantum-secure payment processing</li>
+                                <li>AI-powered product recommendations</li>
+                                <li>Real-time inventory optimization</li>
+                                <li>Blockchain-based supply chain tracking</li>
+                                <li>Advanced analytics dashboard</li>
+                                <li>Multi-dimensional user experience</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-xl font-semibold mb-3 neon-text">Technology Stack:</h4>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                                <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm">React 18</span>
+                                <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm">Node.js</span>
+                                <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm">GraphQL</span>
+                                <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm">MongoDB</span>
+                                <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm">TensorFlow</span>
+                                <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm">Kubernetes</span>
+                                <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm">Blockchain</span>
+                                <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm">WebAssembly</span>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-xl font-semibold mb-3 neon-text">Impact Metrics:</h4>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="text-center p-4 border border-pink-500 rounded-lg">
+                                    <div class="text-2xl font-bold neon-text">300%</div>
+                                    <div class="text-sm">Sales Increase</div>
+                                </div>
+                                <div class="text-center p-4 border border-pink-500 rounded-lg">
+                                    <div class="text-2xl font-bold neon-text">50ms</div>
+                                    <div class="text-sm">Load Time</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            project2: {
+                title: "NeuralAnalytics 🧠",
+                content: `
+                    <div class="space-y-6">
+                        <p class="text-lg">Advanced machine learning platform for predictive analytics and data visualization.</p>
+                        
+                        <div class="terminal">
+                            <div class="terminal-line">$ neural --analyze --deep-learning</div>
+                            <div class="terminal-line">Loading neural networks...</div>
+                            <div class="terminal-line">Accuracy: 97.8%</div>
+                            <div class="terminal-line">Processing: 1TB+ daily</div>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-xl font-semibold mb-3 neon-text">AI Capabilities:</h4>
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>Deep learning neural networks</li>
+                                <li>Natural language processing</li>
+                                <li>Computer vision algorithms</li>
+                                <li>Predictive modeling</li>
+                                <li>Real-time data streaming</li>
+                                <li>Automated report generation</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-xl font-semibold mb-3 neon-text">Technology Stack:</h4>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                                <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm">Python</span>
+                                <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm">TensorFlow</span>
+                                <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm">PyTorch</span>
+                                <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm">Pandas</span>
+                                <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm">D3.js</span>
+                                <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm">Apache Spark</span>
+                                <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm">Elasticsearch</span>
+                                <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm">Docker</span>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            project3: {
+                title: "CloudMesh 🌐",
+                content: `
+                    <div class="space-y-6">
+                        <p class="text-lg">Distributed cloud infrastructure with quantum encryption and auto-scaling capabilities.</p>
+                        
+                        <div class="terminal">
+                            <div class="terminal-line">$ cloudmesh --status --global</div>
+                            <div class="terminal-line">Nodes: 1,000+ active</div>
+                            <div class="terminal-line">Uptime: 99.99%</div>
+                            <div class="terminal-line">Latency: &lt;10ms global</div>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-xl font-semibold mb-3 neon-text">Infrastructure Features:</h4>
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>Microservices architecture</li>
+                                <li>Auto-scaling algorithms</li>
+                                <li>Quantum encryption protocols</li>
+                                <li>Edge computing optimization</li>
+                                <li>Load balancing intelligence</li>
+                                <li>Disaster recovery systems</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-xl font-semibold mb-3 neon-text">Technology Stack:</h4>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                                <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm">Kubernetes</span>
+                                <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm">Go</span>
+                                <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm">Docker</span>
+                                <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm">gRPC</span>
+                                <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm">Istio</span>
+                                <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm">Prometheus</span>
+                                <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm">Terraform</span>
+                                <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm">AWS/GCP</span>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            project4: {
+                title: "CyberAssistant 🤖",
+                content: `
+                    <div class="space-y-6">
+                        <p class="text-lg">AI-powered virtual assistant with quantum learning and multi-modal interaction.</p>
+                        
+                        <div class="terminal">
+                            <div class="terminal-line">$ assistant --initialize --quantum-mode</div>
+                            <div class="terminal-line">Loading consciousness matrix...</div>
+                            <div class="terminal-line">IQ Level: Quantum Enhanced</div>
+                            <div class="terminal-line">Languages: 50+ supported</div>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-xl font-semibold mb-3 neon-text">AI Capabilities:</h4>
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>Natural language understanding</li>
+                                <li>Voice recognition & synthesis</li>
+                                <li>Computer vision processing</li>
+                                <li>Emotional intelligence</li>
+                                <li>Context-aware responses</li>
+                                <li>Continuous learning algorithms</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-xl font-semibold mb-3 neon-text">Technology Stack:</h4>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                                <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm">Python</span>
+                                <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm">PyTorch</span>
+                                <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm">Transformers</span>
+                                <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm">WebRTC</span>
+                                <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm">FastAPI</span>
+                                <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm">Redis</span>
+                                <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm">OpenCV</span>
+                                <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm">CUDA</span>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            project5: {
+                title: "SecureVault 🔐",
+                content: `
+                    <div class="space-y-6">
+                        <p class="text-lg">Quantum-encrypted security platform with zero-trust architecture and biometric authentication.</p>
+                        
+                        <div class="terminal">
+                            <div class="terminal-line">$ securevault --encrypt --quantum-level</div>
+                            <div class="terminal-line">Encryption: AES-256 + Quantum</div>
+                            <div class="terminal-line">Security Level: Military Grade</div>
+                            <div class="terminal-line">Breach Attempts: 0 successful</div>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-xl font-semibold mb-3 neon-text">Security Features:</h4>
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>Quantum encryption algorithms</li>
+                                <li>Biometric authentication</li>
+                                <li>Zero-trust architecture</li>
+                                <li>Blockchain verification</li>
+                                <li>Multi-factor authentication</li>
+                                <li>Real-time threat detection</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-xl font-semibold mb-3 neon-text">Technology Stack:</h4>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                                <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm">Rust</span>
+                                <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm">WebAssembly</span>
+                                <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm">Blockchain</span>
+                                <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm">OpenSSL</span>
+                                <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm">OAuth 2.0</span>
+                                <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm">JWT</span>
+                                <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm">HSM</span>
+                                <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm">FIDO2</span>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            project6: {
+                title: "MetaVerse Engine 🎮",
+                content: `
+                    <div class="space-y-6">
+                        <p class="text-lg">3D metaverse platform with virtual reality integration and blockchain-based digital assets.</p>
+                        
+                        <div class="terminal">
+                            <div class="terminal-line">$ metaverse --launch --vr-mode</div>
+                            <div class="terminal-line">Loading virtual worlds...</div>
+                            <div class="terminal-line">Players Online: 100K+</div>
+                            <div class="terminal-line">NFT Assets: 1M+ minted</div>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-xl font-semibold mb-3 neon-text">Platform Features:</h4>
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>Immersive 3D environments</li>
+                                <li>VR/AR compatibility</li>
+                                <li>Blockchain asset ownership</li>
+                                <li>Real-time multiplayer</li>
+                                <li>Physics simulation</li>
+                                <li>Cross-platform support</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-xl font-semibold mb-3 neon-text">Technology Stack:</h4>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                                <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm">Unity</span>
+                                <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm">C#</span>
+                                <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm">WebGL</span>
+                                <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm">Solidity</span>
+                                <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm">Three.js</span>
+                                <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm">WebXR</span>
+                                <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm">IPFS</span>
+                                <span class="px-3 py-1 bg-pink-500 text-black rounded-full text-sm">Ethereum</span>
+                            </div>
+                        </div>
+                    </div>
+                `
+            }
+        };
+
+        function openProjectModal(projectId) {
+            const modal = document.getElementById('projectModal');
+            const title = document.getElementById('modalTitle');
+            const content = document.getElementById('modalContent');
+            
+            const project = projectData[projectId];
+            title.textContent = project.title;
+            content.innerHTML = project.content;
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeProjectModal() {
+            const modal = document.getElementById('projectModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('projectModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeProjectModal();
+            }
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeProjectModal();
+                const mobileMenu = document.getElementById('mobileMenu');
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            }
+        });
+
+        // Initialize terminal animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const terminalLines = document.querySelectorAll('.terminal-line');
+            terminalLines.forEach((line, index) => {
+                line.style.animationDelay = (index * 0.5) + 's';
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98051cb8f0e806fa',t:'MTc1ODA3NTQ5OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
